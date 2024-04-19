@@ -1,15 +1,15 @@
 {
-    "builds": [
-      {
-        "src": "index_chat.py",
-        "use": "@vercel/python"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "index_chat.py"
-      }
-    ]
-  }
-  
+  "builds": [
+    {
+      "src": "index_chat.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "index_chat.py"
+    }
+  ]
+}
