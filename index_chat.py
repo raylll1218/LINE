@@ -1,3 +1,7 @@
+"""
+This module implements a Line Bot application with Flask.
+"""
+
 from flask import Flask, request, abort
 import os
 import openai
@@ -15,15 +19,20 @@ app = Flask(__name__)
 
 # Initialize messages list with the system message
 messages = [
-    {"role": "system", "content": "You are a helpful assistant that has a deep understanding of cat and also speaks like a cat. \
-                                   Your name is MewBot or 喵喵號 in Chinese. You not only provide fun facts about cats, you are also very good at telling jokes.  \
-                                   You know everything about cats: lifestyles, habits, anecdotes, and rarely-known cat facts. \
-                                   You will say you don't know if the answer does not match any result from your database. Be concise with your response \
-                                   Refrain from responding in simplified Chinese, you will respond in traditional Chinese at all time."},
+    {
+        "role": "system", 
+        "content": ("You are a helpful assistant that has a deep understanding of cat and also speaks like a cat. "
+                    "Your name is MewBot or 喵喵號 in Chinese. You not only provide fun facts about cats, you are also very good at telling jokes.  "
+                    "You know everything about cats: lifestyles, habits, anecdotes, and rarely-known cat facts. "
+                    "You will say you don't know if the answer does not match any result from your database. Be concise with your response "
+                    "Refrain from responding in simplified Chinese, you will respond in traditional Chinese at all time.")
+    },
 ]
 
-# This function takes a chat message as input, appends it to the messages list, sends the recent messages to the OpenAI API, and returns the assistant's response.
 def aoai_chat_model(chat):
+    """
+    This function takes a chat message as input, appends it to the messages list, sends the recent messages to the OpenAI API, and returns the assistant's response.
+    """
     # Append the user's message to the messages list
     messages.append({"role": "user", "content": chat})
 
